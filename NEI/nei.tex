@@ -81,7 +81,7 @@
 %
 \begin{minipage}[c]{0.45\linewidth}
   \center
-  \large \textbf{Huziy O., Sushama L., Teufel B., Duarte L.} \\[0.5cm]
+  \large \textbf{Huziy O., Sushama L., Teufel B., Duarte L., Ruman C.} \\[0.5cm]
   \large \texttt{Contact email: guziy.sasha@gmail.com}
 \end{minipage}
 %
@@ -141,9 +141,10 @@ extremes for elevated regions by 0.5–1 mm/day.
 \vspace{1cm}
 \begin{tcolorbox}[colback=white,colframe=green!40!black,adjusted title={Main objectives}]
   \begin{enumerate}
-  \item Evaluate the impact of the improved Great Lakes representation on simulated climate and heavy lake-effect snowfall (HLES) events in particular.
-  \item Study the climatology of HLES based on gridded observation datasets.
-  \item Link HLES events to large scale circulation patterns.
+  \item Evaluate the net impact of the improved CRCM5 model, resulted from adding
+        dynamic vegetation, frozen soil hydraulic conductivity and glacier
+        parameterization, on simulated climate of western Canada at 0.44$^\circ$ and 0.11$^\circ$ horizontal grid spacing.
+  \item Study the impact of added modifications on simulated temperature and precipitation extremes.
   \end{enumerate}
 \end{tcolorbox}
 
@@ -154,7 +155,7 @@ extremes for elevated regions by 0.5–1 mm/day.
 \section*{(B) Methods and experiment configurations}
 %\subsection*{C.1 Methods}
 %
-This study is based on the comparison of two CRCM5 simulations (Table \ref{table:simulations}) performed over the Laurentian Great Lakes (Fig.~\ref{figure:simdomain}).\\[1cm]
+This study is based on the comparison of three CRCM5 simulations (Table \ref{table:simulations}) performed over the Laurentian Great Lakes (Fig.~\ref{figure:simdomain}).\\[1cm]
 %
 \adjustbox{valign=t, minipage=0.45\linewidth}{
     \centering
@@ -206,32 +207,34 @@ This study is based on the comparison of two CRCM5 simulations (Table \ref{table
 }
 
 \vspace{0.5cm}
-\noindent
-\textbf{HLES: Observations}\\
-To diagnose observed HLES, we follow \citet{notaro2015} using the following gridded datasets:
-    \begin{itemize}
-        \item Temperature and precipitation, required to calculate snowfall, considered
-              to be heavy if greater than 10 cm/day, are taken from high resolution datasets
-              for Canada  \citep[10km, ][]{hopkinson2011} and the U.S. \citep[0.125$^\circ$, ][]{maurer2002}.
-              Snowfall is examined within the 100km region around the shores of the Great Lakes and it is also
-              required to be greater than the mean over the non-local region of the  by 4 cm/day, i.e. locally enhanced.
-        \item Ice concentration, required to eliminate impact of frozen lakes, i.e. if ice
-              concentration is greater than 70\%, are taken from the extended Great Lakes ice
-              cover atlas datasets available from Great Lakes Environmental Research
-              Laboratory (GLERL) website.
-        \item Wind components, used to do back trajectories, are taken from ERA-Interim reanalysis (0.75$^\circ$).
-    \end{itemize}
 
-\noindent
-\textbf{HLES: model}\\
-The HLES events are diagnosed from the model outputs using the same approach as above, i.e. \citet{notaro2015}, applied to simulated wind components, snow fall and lake ice fraction.
+Below is the summary of the changes to the default model configuration evaluated in this study.
+\begin{itemize}
+  \item \textbf{Dynamic glaciers}. The implementation of dynamic glaciers is inspired by \citet{kotlarski2009}. The parameterization
+  uses high resolution elevation datasets to divide sub-grid glaciers into elevation bins and uses
+  precipitation and energy fluxes provided by CRCM5 to simulate evolution of characteristics of glaciers.
+  This improvement is expected to give improved representation of spatial extent of the glaciers and lead to
+  more realistic albedo and therefore a better partitioning of radiation fluxes.
+
+  \item \textbf{Dynamic vegetation} is the module responsible for simulation of carbon pools and
+  two way interactions of vegetation and climate. The model used for this parameterization is CTEM ().
+
+  \item \textbf{Hydraulic conductivity of frozen soil} is modified based on ... Expected impact is ...
+\end{itemize}
+
+
+
+
+
+
+
 
 %----------------------------------------------------------------------------------------
 %	RESULTS
 %----------------------------------------------------------------------------------------
 
 \section*{(C) Results}
-\subsection*{C.1 Validation: 2m air temperature, lake surface water temperature and surface currents}
+\subsection*{C.1 Validation: seasonal 2m air temperature and total precipitation}
 
 %%%2m air temp and LSWT validation
 \begin{center}
