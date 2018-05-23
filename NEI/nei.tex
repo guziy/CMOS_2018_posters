@@ -157,22 +157,15 @@ extremes for elevated regions by 0.5–1 mm/day.
 %
 This study is based on the comparison of three CRCM5 simulations (Table \ref{table:simulations}) performed over the Laurentian Great Lakes (Fig.~\ref{figure:simdomain}).\\[1cm]
 %
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-    \centering
-    \includegraphics[width=\linewidth]{figures/placeholder}
-    \captionof{figure}{\label{figure:simdomain}\color{Green} Simulation domain and configuration schemes}
-}
-%
-\hfill
-%
-\adjustbox{valign=t, minipage=0.50\linewidth}{
+\adjustbox{valign=t, minipage=\linewidth}{
   \footnotesize
   \begin{tabularx}{\linewidth}{lX}
   \toprule
   \textbf{Simulation}    & \textbf{Description}\\
   \midrule
-  \textbf{CRCM5\_HL}     & ERA-Interim (0.75$^\circ$) reanalysis-driven, all lakes are modelled by Hostetler (1D) lake model \\[0.5cm]
-  \textbf{CRCM5\_NEMO}   & ERA-Interim (0.75$^\circ$) reanalysis-driven, the Great Lakes are modelled by NEMO (3D) ocean model, other lakes in the region are modelled by Hostetler (1D) lake model \\
+  \textbf{WC044\_default}    & Default model before implementation of the enhancements (dynamic vegetation, glaciers and hydraulic conductivity of frozen soil) at 0.44$^\circ$ horizontal grid spacing\\[0.5cm]
+  \textbf{WC044\_modified}   & With parameterization enhancements at 0.44$^\circ$ \\[0.5cm]
+  \textbf{WC011\_modified}   & With parameterization enhancements at 0.44$^\circ$\\
   \bottomrule
   \end{tabularx}
   \captionof{table}{\label{table:simulations}\color{Green} List of simulations used in the current study}
@@ -250,15 +243,8 @@ Below is the summary of the changes to the default model configuration evaluated
 \end{center}
 
 \begin{itemize}
-    \item CRCM5\_NEMO decreases positive biases seen in CRCM5\_HL around the lakes during spring and summer (Fig.~\ref{figure:t2mvalidation}).
-    Negative CRCM5\_HL biases south of the lakes decreased in winter and fall in CRCM5\_NEMO, although positive biases amplified in some regions (Fig.~\ref{figure:t2mvalidation}).
-    \item CRCM5\_NEMO-simulated lake surface water temperature is in better agreement with
-          the observations due to the added horizontal circulation, which makes the lake
-          cooling and warming inertia more realistic (Fig~\ref{figure:sstvalidation}).
-    \item 2-m air temperature differences betweenn CRCM5\_NEMO and
-          CRCM5\_HL simulations (Fig.~\ref{figure:t2mvalidation}) are in agreement with the
-          differences in lake surface water temperature between these simulations
-          (Fig~\ref{figure:sstvalidation}).
+    \item Discussion
+
 \end{itemize}
 
 
@@ -279,9 +265,7 @@ Below is the summary of the changes to the default model configuration evaluated
 \begin{itemize}
   \item Ice cover fraction validation suggests mostly improved and lower lake ice concentrations in CRCM5\_NEMO with respect to CRCM5\_HL (Fig.~\ref{figure:ice2dvalidation}).
   The ice cover is mostly underestimated in CRCM5\_NEMO.
-  \item Precipitation biases are shown for winter and summer season, when the precipitation differences between CRCM5\_NEMO and CRCM5\_HL are highest (Fig.~\ref{figure:precipvalidation}).
-  The positive impact of the 3D lake parameterization in winter is due to higher water temperatures and lower ice cover fractions which lead to increased moistening of the overlying air.
-  In summer, the effect on precipitation os opposite due to cooler lake surfaces (Fig~\ref{figure:sstvalidation}).
+
 \end{itemize}
 
 
@@ -313,8 +297,6 @@ Below is the summary of the changes to the default model configuration evaluated
 \begin{itemize}
   \item The locations of dominant HLES are captured in CRCM5\_NEMO, although the spatial extent is underestimated east of lakes Superior and Huron.
         This could be due to biases in the model or due to the lower resolution of the wind fields (0.75$^\circ$) used to diagnose observed HLES (Fig.~\ref{figure:hlesspatial}).
-  \item The locations and extent of the HLES regions is captured better around the lakes Erie and Ontario, although the values are slightly overestimated in
-        CRCM5\_NEMO (Fig.~\ref{figure:hlesspatial}).
 \end{itemize}
 
 
@@ -355,30 +337,6 @@ Below is the summary of the changes to the default model configuration evaluated
   \end{itemize}
 }
 
-\subsection*{C.3 Linking HLES to large scale circulation patterns}
-
-\noindent
-\adjustbox{valign=t, minipage=0.55\linewidth}{
-  \centering
-  \includegraphics[width=\linewidth]{placeholder}
-  \captionof{figure}{\color{Green} \label{figure:hles_high_minus_low_composite} Differences between the composites of sea level pressure (surface wind) from ERA-Interim reanalysis based
-  on mean values for years with
-  extreme high and low HLES. The extreme high (low) HLES years selected for the analysis are 1993, 1995, 1998 (1997, 2001, 2006).}
-}
-%
-\hfill
-%
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-\begin{itemize}
-  \item Extreme high (low) HLES events are associated with the following two
-        surface circulation anomalies: weakening (amplification) of the Aleutian low
-        and cyclonic (anticyclonic) anomaly over Hudson Bay. These anomalies
-        (anticyclonic over Aleutian islands and cyclonic over northern part of Hudson
-        Bay) favor and steer the north westerly flow of cold air in the direction of
-        the Great Lakes, thereby favoring the occurrences of HLES
-        (Fig.~\ref{figure:hles_high_minus_low_composite}).
-\end{itemize}
-}
 
 %----------------------------------------------------------------------------------------
 %	CONCLUSIONS
