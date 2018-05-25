@@ -143,8 +143,10 @@ extremes for elevated regions by 0.5–1 mm/day.
   \begin{enumerate}
   \item Evaluate the net impact of the improved CRCM5 model, resulted from adding
         dynamic vegetation, frozen soil hydraulic conductivity and glacier
-        parameterization, on simulated climate of western Canada at 0.44$^\circ$ and 0.11$^\circ$ horizontal grid spacing.
-  \item Study the impact of added modifications on simulated temperature and precipitation extremes.
+        parameterization, on simulated climate of western Canada at 0.44$^\circ$.
+  \item Identify the impact of increased resolution on the modified model configuration,
+        by comparing simulations at 0.44$^\circ$ and 0.11$^\circ$ horizontal grid
+        spacing.
   \end{enumerate}
 \end{tcolorbox}
 
@@ -163,9 +165,9 @@ This study is based on the comparison of three CRCM5 simulations (Table \ref{tab
   \toprule
   \textbf{Simulation}    & \textbf{Description}\\
   \midrule
-  \textbf{WC044\_default}    & Default model before implementation of the enhancements (dynamic vegetation, glaciers and hydraulic conductivity of frozen soil) at 0.44$^\circ$ horizontal grid spacing\\[0.5cm]
-  \textbf{WC044\_modified}   & With parameterization enhancements at 0.44$^\circ$ \\[0.5cm]
-  \textbf{WC011\_modified}   & With parameterization enhancements at 0.44$^\circ$\\
+  \textbf{WC\_044\_default}    & Default model before implementation of the enhancements (dynamic vegetation, glaciers and hydraulic conductivity of frozen soil) at 0.44$^\circ$ horizontal grid spacing\\[0.5cm]
+  \textbf{WC\_044\_modified}   & With parameterization enhancements at 0.44$^\circ$ \\[0.5cm]
+  \textbf{WC\_011\_modified}   & With parameterization enhancements at 0.11$^\circ$\\
   \bottomrule
   \end{tabularx}
   \captionof{table}{\label{table:simulations}\color{Green} List of simulations used in the current study}
@@ -178,22 +180,11 @@ This study is based on the comparison of three CRCM5 simulations (Table \ref{tab
   \flushleft
   \small
   \begin{itemize}
-    \item Simulation period: 1979--2010
+    \item Simulation period: 1980--2010
     \item Horizontal grid size and resolution: 452$\times$260, \textbf{0.1$^\circ$};
     \item CRCM5 time step: 5 min;
-    \item 1D Lake model: Hostetler;
-    \item NEMO model is used in the Great Lakes in CRCM5\_NEMO, where LIM3 is used for lake ice;
-    \begin{itemize}
-        \footnotesize
-        \item Distribution of ice over thickness categories is one of LIM3 prognostic
-              variables (in addition to the ice temperature and velocity), which is used to
-              calculate ice concentration in a grid cell as a weighted mean over the thickness bins using the
-              modelled distribution.
-    \end{itemize}
-
-
-    \item NEMO time step: 30 min;
-    \item Surface scheme: CLASS3.5;
+    \item 1D Lake model: FLake;
+    \item Surface scheme: CLASS;
     \item Lateral boundary conditions: ERA-Interim, 0.75$^\circ$
   \end{itemize}
   \end{tcolorbox}
@@ -227,14 +218,30 @@ Below is the summary of the changes to the default model configuration evaluated
 %----------------------------------------------------------------------------------------
 
 \section*{(C) Results}
-\subsection*{C.1 Validation: seasonal 2m air temperature and total precipitation}
-
+\subsection*{C.1 Validation: impact of added parameterizations}
 %%%2m air temp and LSWT validation
-\begin{center}
-    \includegraphics[width=\linewidth]{figures/placeholder}
-    \captionof{figure}{\label{figure:t2mvalidation}\color{Green} Seasonal 2m air temperature ($^\circ$C) from \citet{hopkinson2011} and \citet{maurer2002} for the 1980-2010 period (first row),
-    seasonal mean biases in the CRCM5\_HL (second row) and differences between CRCM5\_NEMO and CRCM5\_HL-simulated 2m air temperature (third row).}
-\end{center}
+
+\begin{flushleft}
+\begin{picture}(400, 480)
+
+    % label seasons
+    % \put(10, 700) {\textbf{DJF}}
+    % \put(250, 700) {\textbf{MAM}}
+    % \put(510, 700) {\textbf{JJA}}
+    % \put(760, 700) {\textbf{SON}}
+
+    \put(0, 480){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.1cm},clip]{figures/seasonal_mean_TT_bias_wc_044_default}}
+    \put(-20, 520) {\rotatebox{90}{WC\_044\_default}}
+
+    \put(0, 240){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.41cm},clip]{figures/seasonal_mean_TT_bias_wc_044_modified}}
+    \put(-20, 280) {\rotatebox{90}{WC\_044\_modified}}
+
+    % \put(0, 0){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.41cm},clip]{figures/seasonal_mean_TT_bias_wc_011_modified}}
+    % \put(-20, 40) {\rotatebox{90}{WC\_011\_modified}}
+\end{picture}
+\captionof{figure}{\label{figure:t2mvalidation}\color{Green} Seasonal 2m air temperature ($^\circ$C) from \citet{hopkinson2011} and \citet{maurer2002} for the 1980-2010 period (first row),
+seasonal mean biases in the CRCM5\_HL (second row) and differences between CRCM5\_NEMO and CRCM5\_HL-simulated 2m air temperature (third row).}
+\end{flushleft}
 
 \begin{center}
     \includegraphics[width=\linewidth]{figures/placeholder}
@@ -284,58 +291,8 @@ Below is the summary of the changes to the default model configuration evaluated
 \end{itemize}
 
 
-\subsection*{C.2 Impacts of the 3D parametrization of the Great Lakes on simulated HLES: spatial distribution and inter-annual variability}
-\noindent
-\begin{minipage}{\linewidth}
-  \center
-  \includegraphics[width=\linewidth]{figures/placeholder}
-  \captionof{figure}{\color{Green}\label{figure:hlesspatial} Mean number of HLES days during November-January for the 1980-2010 period derived from observations (left),
-  CRCM5\_NEMO (middle) and CRCM5\_HL (right) simulation outputs.}
-\end{minipage} \\[0.5cm]
+\subsection*{C.2 Validation: impact of resolution}
 
-
-\begin{itemize}
-  \item The locations of dominant HLES are captured in CRCM5\_NEMO, although the spatial extent is underestimated east of lakes Superior and Huron.
-        This could be due to biases in the model or due to the lower resolution of the wind fields (0.75$^\circ$) used to diagnose observed HLES (Fig.~\ref{figure:hlesspatial}).
-\end{itemize}
-
-
-
-\adjustbox{valign=t, minipage=0.6\linewidth}{
-  \includegraphics[width=\linewidth]{placeholder}
-  \captionof{figure}{\color{Green} \label{figure:hlesinterannual} Distributions of area-averaged HLES (cm) during November-January
-  from observations, CRCM5\_NEMO and CRCM5\_HL respectively for the 1980-2010 period.}
-}
-%
-\hfill
-%
-\adjustbox{valign=t, minipage=0.4\linewidth}{
-\noindent
-\begin{itemize}
-  \item Simulated mean and inter-annual variability of HLES is improved in CRCM5\_NEMO, although it is still underestimated (Fig.~\ref{figure:hlesinterannual}).
-  The correlation of CRCM5\_NEMO (CRCM5\_HL)-based HLES with the observation-based HLES is 0.72 (-0.10).
-\end{itemize}
-}
-
-
-\noindent
-\adjustbox{valign=t, minipage=0.55\linewidth}{
-  \includegraphics[width=\linewidth]{placeholder}
-  \captionof{figure}{\color{Green} \label{figure:hlesmonthly} Monthly area-averaged HLES (\%) during November,
-  December and January from observations, CRCM5\_NEMO and CRCM5\_HL respectively for the 1980-2010 period.}
-}
-%
-\hfill
-%
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-  \begin{itemize}
-      \item Distributions of HLES over months within the period of interest (Nov-Jan, Fig.~\ref{figure:hlesmonthly})
-      suggest that the fractions of HLES from observations and CRCM5\_NEMO are similar and increase from November to January. The distribution of HLES for CRCM5\_HL
-      is quite different from the observed one, due to
-      the negative lake water temperature biases in winter (Fig.~\ref{figure:sstvalidation}) and overestimated lake ice fractions (Fig.~\ref{figure:ice2dvalidation}), which lead
-      to the shift of the majority of the HLES events to the onset period.
-  \end{itemize}
-}
 
 
 %----------------------------------------------------------------------------------------
