@@ -194,17 +194,31 @@ This study is based on the comparison of three CRCM5 simulations (Table \ref{tab
 
 Below is the summary of the changes to the default model configuration evaluated in this study.
 \begin{itemize}
-  \item \textbf{Dynamic glaciers}. The implementation of dynamic glaciers is inspired by \citet{kotlarski2009}. The parameterization
-  uses high resolution elevation datasets to divide sub-grid glaciers into elevation bins and uses
-  precipitation and energy fluxes provided by CRCM5 to simulate evolution of characteristics of glaciers.
-  This improvement is expected to give improved representation of spatial extent of the glaciers and lead to
-  more realistic albedo and therefore a better partitioning of radiation fluxes.
-
   \item \textbf{Dynamic vegetation} is the module responsible for simulation of carbon pools and
   two way interactions of vegetation and climate. The model used for this parameterization is CTEM ().
 
   \item \textbf{Hydraulic conductivity of frozen soil} is modified based on ... Expected impact is ...
 \end{itemize}
+
+\adjustbox{valign=t, minipage=0.48\linewidth}{
+  \begin{itemize}
+    \item \textbf{Dynamic glaciers}. The implementation of dynamic glaciers is inspired by \citet{kotlarski2009}. The parameterization
+    uses high resolution elevation datasets to divide sub-grid glaciers into elevation bins and uses
+    precipitation and energy fluxes provided by CRCM5 to simulate evolution of characteristics of glaciers.
+    This improvement is expected to give improved representation of spatial extent of the glaciers and lead to
+    more realistic albedo and therefore a better partitioning of radiation fluxes.
+  \end{itemize}
+}
+%
+\hfill
+%
+\adjustbox{valign=t, minipage=0.45\linewidth}{
+  \includegraphics[width=\linewidth]{figures/glacier_fraction}
+  \captionof{figure}{\color{Green} Spatial extent of glacier fractions used as initial conditions for
+                      the WC\_044\_modified and WC\_011\_modified configurations. Based on Randolph
+                      Glacier Innventory (RGI) global dataset.}
+}
+
 
 
 
@@ -218,7 +232,7 @@ Below is the summary of the changes to the default model configuration evaluated
 %----------------------------------------------------------------------------------------
 
 \section*{(C) Results}
-\subsection*{C.1 Validation: impact of added parameterizations}
+\subsection*{C.1 Impact of added parameterizations on seasonal mean fields}
 %%%2m air temp and LSWT validation
 
 \begin{flushleft}
@@ -230,24 +244,63 @@ Below is the summary of the changes to the default model configuration evaluated
     % \put(510, 700) {\textbf{JJA}}
     % \put(760, 700) {\textbf{SON}}
 
-    \put(0, 480){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.1cm},clip]{figures/seasonal_mean_TT_bias_wc_044_default}}
-    \put(-20, 520) {\rotatebox{90}{WC\_044\_default}}
+    \put(0, 240){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.1cm},clip]{figures/seasonal_mean_TT_bias_wc_044_default}}
+    \put(-20, 280) {\rotatebox{90}{WC\_044\_default}}
 
-    \put(0, 240){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.41cm},clip]{figures/seasonal_mean_TT_bias_wc_044_modified}}
-    \put(-20, 280) {\rotatebox{90}{WC\_044\_modified}}
+    \put(0, 0){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.41cm},clip]{figures/seasonal_mean_TT_bias_wc_044_modified}}
+    \put(-20, 40) {\rotatebox{90}{WC\_044\_modified}}
 
     % \put(0, 0){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.41cm},clip]{figures/seasonal_mean_TT_bias_wc_011_modified}}
     % \put(-20, 40) {\rotatebox{90}{WC\_011\_modified}}
 \end{picture}
-\captionof{figure}{\label{figure:t2mvalidation}\color{Green} Seasonal 2m air temperature ($^\circ$C) from \citet{hopkinson2011} and \citet{maurer2002} for the 1980-2010 period (first row),
-seasonal mean biases in the CRCM5\_HL (second row) and differences between CRCM5\_NEMO and CRCM5\_HL-simulated 2m air temperature (third row).}
+\captionof{figure}{\label{figure:t2mvalidation}
+                   \color{Green} Seasonal 2m air temperature biases with respect to aggregated
+                    DAYMET dataset ($^\circ$C) for WC\_044\_default (first row) and
+                    WC\_044\_modified (second row).}
+
+
 \end{flushleft}
 
-\begin{center}
-    \includegraphics[width=\linewidth]{figures/placeholder}
-    \captionof{figure}{\label{figure:sstvalidation}\color{Green} Seasonal lake surface water temperature ($^\circ$C) from NOAA OISST (first row),
-    seasonal mean biases in the CRCM5\_HL (second row) and seasonal mean biases in the CRCM5\_NEMO (third row) for the 2003-2010.}
-\end{center}
+\vspace{0.5cm}
+
+\begin{flushleft}
+\begin{picture}(400, 480)
+
+    % label seasons
+    % \put(10, 700) {\textbf{DJF}}
+    % \put(250, 700) {\textbf{MAM}}
+    % \put(510, 700) {\textbf{JJA}}
+    % \put(760, 700) {\textbf{SON}}
+
+    \put(0, 240){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.1cm},clip]{figures/seasonal_mean_PR_bias_wc_044_default}}
+    \put(-20, 280) {\rotatebox{90}{WC\_044\_default}}
+
+    \put(0, 0){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.41cm},clip]{figures/seasonal_mean_PR_bias_wc_044_modified}}
+    \put(-20, 40) {\rotatebox{90}{WC\_044\_modified}}
+
+    % \put(0, 0){\includegraphics[width=\linewidth,trim={0.3cm 0 0 0.41cm},clip]{figures/seasonal_mean_TT_bias_wc_011_modified}}
+    % \put(-20, 40) {\rotatebox{90}{WC\_011\_modified}}
+\end{picture}
+\captionof{figure}{\label{figure:prvalidation}\color{Green} Same as Figure \ref{figure:t2mvalidation} but for total precipitation (mm/day).}
+\end{flushleft}
+
+%Discussion
+\begin{itemize}
+  \item DJF and SON 2m-air temperature and total precipitation are not significantly
+  affected by the new parameterizations (See Figures \ref{figure:t2t2mvalidation} and \ref{figure:prvalidation}).
+  \item Although MAM season air temperature cold bias is larger in WC\_044\_modified with respect to WC\_044\_default,
+  a significant decreases of wet biases in MAM total precipitation in the southwestern part of the domain are noted for  WC\_044\_modified.
+  The cold bias in the MAM temperatures is caused by the slow growth rate in the vegetation scheme, which leads to higher albedos and cooler temperatures during MAM.
+  \item The new parameterizations produce warmer 2m-air temperatures in the southern part
+  of the domain leading to larger positive biases in the southwestern and removing negative biases in
+  southeastern parts of the domain.
+  \item JJA precipitation is slightly worse in WC\_044\_modified with respect to
+  the default configuration in the southeastern part of the domain. 
+\end{itemize}
+
+
+\subsection*{C.2 Impact of added parameterizations on simulated daily extremes}
+
 
 \begin{itemize}
     \item Discussion
