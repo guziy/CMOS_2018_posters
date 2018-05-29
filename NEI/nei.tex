@@ -157,7 +157,7 @@ extremes for elevated regions by 0.5–1 mm/day.
 \section*{(B) Methods and experiment configurations}
 %\subsection*{C.1 Methods}
 %
-This study is based on the comparison of three CRCM5 simulations (Table \ref{table:simulations}) performed over western Canada (Fig.~\ref{figure:glacier_fraction}).\\[1cm]
+This study is based on the comparison of three CRCM5 simulations (Table \ref{table:simulations}) performed over western Canada.\\[1cm]
 %
 \adjustbox{valign=t, minipage=\linewidth}{
   \footnotesize
@@ -316,9 +316,9 @@ two way interactions of vegetation and climate. The model used for this paramete
 
 \subsection*{C.3 Impact of added parameterizations and of resolution on simulated daily extremes}
 
-To evaluate the impacts of the model modifications on simulated daily extremes the 10th percentile of
-daily minimum temperature, 90th percentile of daily maximum temperature and 90th percentile of
-daily mean total precipitation are averaged over land and the time series are compared for WC\_044\_default and
+To evaluate the impacts of the model modifications on simulated daily extremes the 90th percentile of
+daily minimum temperature (TN90), 10th percentile of daily maximum temperature (TX10) and 90th percentile of
+daily mean total precipitation (PR90) are averaged over land and the time series are compared for WC\_044\_default and
 WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 
 \noindent
@@ -326,15 +326,22 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 \center
 \begin{tikzpicture}
     % schematics
-    \node[label={\small TX10}] (tx10) at (0,0) {
-      \includegraphics[width=0.48\linewidth, trim={0 0 0 7cm}, clip]{figures/tx10_ts}
+    \node[label={\small TX10}] (tx10) {
+      \includegraphics[width=0.48\linewidth, trim={0 0 0 0}, clip]{figures/tx10_ts}
     };
-    \node[label={\small TN90}] (tn90) at (0.5\linewidth,0) {
-      \includegraphics[width=0.48\linewidth, trim={0 0 0 8cm}, clip]{figures/tn90_ts}
+    \node[right=0.1cm of tx10.east, anchor=west, label={\small TN90}] (tn90) {
+      \includegraphics[width=0.48\linewidth, trim={0 0 0 0}, clip]{figures/tn90_ts}
     };
 
-    \node[label={\small PR90}, below=1cm of tx10] (pr90) {
-      \includegraphics[width=0.48\linewidth, trim={0 0 0 8cm}, clip]{figures/pr90_ts}
+    \node[label={\small PR90}, below=1cm of tx10.south, anchor=north] (pr90) {
+      \includegraphics[width=0.48\linewidth, trim={0 0 0 0}, clip]{figures/pr90_ts}
+    };
+
+    \node [below=-1cm of tn90.south, anchor=north, text width=0.4\linewidth, align=left]{
+      \captionof{figure}{\color{Green} Area averaged biases of 10th percentile of daily maximum temperature (TX10),
+      90th percentile of daily minimum temperature (TN90) and 90th percentile of daily mean total precipitation (PR90) for WC\_044\_default (blue),
+      WC\_044\_modified (orange) and WC\_011\_modified (green). The biases are calculated using DAYMET observation dataset.
+      }
     };
 \end{tikzpicture}
 \end{minipage}
@@ -346,38 +353,6 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 \end{itemize}
 
 
-\adjustbox{valign=t, minipage=0.48\linewidth}{
-  \includegraphics[width=\linewidth]{placeholder}
-  \captionof{figure}{\label{figure:ice2dvalidation}\color{Green} Mean February and March ice fraction from the extended Gret Lakes ice atlas, available from GLERL website, (first row), ice fraction biases in
-  the CRCM5\_HL simulation (second row) and ice fraction differences between CRCM5\_NEMO and CRCM5\_HL simulations (third row) for the 1980-2010 period.}
-}
-%
-\hfill
-%
-\adjustbox{valign=t, minipage=0.48\linewidth}{
-  \includegraphics[width=\linewidth]{placeholder}
-  \captionof{figure}{\label{figure:precipvalidation}\color{Green} Seasonal total precipitation (mm/day) from \citet{hopkinson2011} and \citet{maurer2002} for the 1980-2010 period (first row),
-  seasonal mean biases in the CRCM5\_HL (second row) and differences between CRCM5\_NEMO and CRCM5\_HL-simulated total precipitation (third row).}
-}
-
-\begin{itemize}
-  \item Ice cover fraction validation suggests mostly improved and lower lake ice concentrations in CRCM5\_NEMO with respect to CRCM5\_HL (Fig.~\ref{figure:ice2dvalidation}).
-  The ice cover is mostly underestimated in CRCM5\_NEMO.
-
-\end{itemize}
-
-
-\noindent
-\adjustbox{valign=t, minipage=\linewidth}{
-  \noindent
-  \includegraphics[width=\linewidth]{figures/placeholder}
-  \captionof{figure}{\color{Green} Mean seasonal surface currents (m/s) simulated by CRCM5\_NEMO for the 1980-2010 period.}
-}
-\begin{itemize}
-  \item Strongest surface currents are noted in winter, which corresponds to the result in \citet{dupont2012}.
-  \item Keweenav current (southern part of lake Superior in summer) is captured with the maximum speed
-  between 6-8 cm/s (maximum speed in the current simulated by \citet{dupont2012} is 7 cm/s).
-\end{itemize}
 
 
 \subsection*{C.4 Zonal structure of the daily extremes in a region with complex topography}
@@ -393,19 +368,11 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
   \section*{(D) Conclusions}
 
   \begin{itemize}
-  \item In this project, CRCM5 simulations with a 1D and a new 3D parameterizations of the Great Lakes were evaluated with observations and used to analyze HLES events in the region.
-  \item The new large lakes parameterization has impact on seasonal 2m air temperature and total precipitation
-        around the lakes and it mostly decreases simulation biases with respect to the
-        1D parameterization of large lakes.
-  \item Surface currents simulated by the coupled system are reasonable and have similar features with previous studies.
-  \item Simulated HLES values are greatly improved in CRCM5\_NEMO with respect to
-        CRCM5\_HL, due to improved simulated lake surface water temperature and lake
-        ice, which highlights the importance of large lake parameterization different
-        from that for smaller lakes for better representation of the physical processes
-        leading to HLES events.
-  \item In future, it is planned to perform transient climate change simulations with
-        the improved 3D large lake parameterization to study the projected changes to
-        HLES characteristics.
+  \item In this project, CRCM5 simulations with newly added surface parameterizations of dynamic vegetation,
+  glaciers and frozen soil hydraulic conductivity were evaluated over the region of western Canada at 0.44$^\circ$ and 0.11$^\circ$ resolutions.
+  \item It is recognized that the modified configurations are not tuned as extensively as the default one and therefore
+  some added value is still expected to be gained after the model is retuned.
+  \item Conclusion...
   \end{itemize}
 }
 %\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
