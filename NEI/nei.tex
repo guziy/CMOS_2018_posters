@@ -55,6 +55,10 @@
 \usepackage[export]{adjustbox}
 \usepackage[skins,listings,breakable,listingsutf8,theorems,hooks,fitting]{tcolorbox}
 \tcbuselibrary{raster}
+
+\newcommand{\hspc}{0.0cm}
+\newcommand{\wspc}{0.0cm}
+
 \begin{document}
 
 \captionsetup{justification=raggedright}
@@ -356,6 +360,96 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 
 
 \subsection*{C.4 Zonal structure of the daily extremes in a region with complex topography}
+
+\begin{minipage}[t]{\linewidth}
+\center
+\includegraphics[width=0.9\linewidth]{figures/domain_and_focus_for_meridional_avg}
+\captionof{figure}{\color{Green} Topography field (m) is shown in colors. Black rectangle is showing the region of meridional averaging.}
+\end{minipage}
+
+\noindent
+\begin{minipage}[t]{\linewidth}
+\center
+
+\begin{tikzpicture}
+
+
+    % TX10
+    \node[label={\small TX10}] (tx10_djf) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/DJF_t_air_2m_daily_max}
+    };
+
+    \node[below=\hspc of tx10_djf] (tx10_mam) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/MAM_t_air_2m_daily_max}
+    };
+
+    \node[below=\hspc of tx10_mam] (tx10_jja) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/JJA_t_air_2m_daily_max}
+    };
+
+    \node[below=\hspc of tx10_jja] (tx10_son) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/SON_t_air_2m_daily_max}
+    };
+
+
+    %TN90
+    \node[label={\small TN90}, right=\wspc of tx10_djf.east, anchor=west] (tn90_djf) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/DJF_t_air_2m_daily_min}
+    };
+
+    \node[below=\hspc of tn90_djf] (tn90_mam) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/MAM_t_air_2m_daily_min}
+    };
+
+    \node[below=\hspc of tn90_mam] (tn90_jja) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/JJA_t_air_2m_daily_min}
+    };
+
+    \node[below=\hspc of tn90_jja] (tn90_son) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/SON_t_air_2m_daily_min}
+    };
+
+    %PR90
+    \node[label={\small PR90}, right=\wspc of tn90_djf] (pr90_djf) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/DJF_total_prec}
+    };
+
+    \node[below=\hspc of pr90_djf] (pr90_mam) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/MAM_total_prec}
+    };
+
+    \node[below=\hspc of pr90_mam] (pr90_jja) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/JJA_total_prec}
+    };
+
+    \node[below=\hspc of pr90_jja] (pr90_son) {
+      \includegraphics[width=0.31\linewidth, trim={0 7.4cm 0 1cm}, clip]{figures/meridional_avg/SON_total_prec}
+    };
+
+
+    %elevation
+    \node[below=\hspc of tx10_son] (el1) {
+      \includegraphics[width=0.31\linewidth, trim={0 0 0 12.2cm}, clip]{figures/meridional_avg/MAM_total_prec}
+    };
+
+    \node[below=\hspc of tn90_son] (el2) {
+      \includegraphics[width=0.31\linewidth, trim={0 0 0 12.2cm}, clip]{figures/meridional_avg/JJA_total_prec}
+    };
+
+    \node[below=\hspc of pr90_son] (el3) {
+      \includegraphics[width=0.31\linewidth, trim={0 0 0 12.2cm}, clip]{figures/meridional_avg/SON_total_prec}
+    };
+
+    \node [below=-0.5cm of el1.south west, anchor=north west, text width=\linewidth, align=left]{
+      \captionof{figure}{\color{Green} Zonal structure of seasonal mean biases for 10th percentile of daily maximum temperature (TX10),
+      90th percentile of daily minimum temperature (TN90) and 90th percentile of daily mean total precipitation (PR90) for WC\_044\_default (blue),
+      WC\_044\_modified (orange) and WC\_011\_modified (green). The biases are calculated using DAYMET observation dataset.
+      }
+    };
+
+
+\end{tikzpicture}
+\end{minipage}
 
 
 
