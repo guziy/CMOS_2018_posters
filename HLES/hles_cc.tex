@@ -109,19 +109,18 @@
 %\color{SaddleBrown} % SaddleBrown color for the introduction
 
 \section*{(A) Introduction}
-Lakes are important components of the climate system and can affect regional
-climate by modulating surface albedo, surface energy and moisture budgets.
+Lakes affect regional climate by modulating surface albedo, surface energy and moisture budgets.
 Therefore, they should be realistically represented in climate models. Many
 climate models are currently representing lakes interactively using 1D models.
 However, for large lakes such as the Laurentian Great Lakes, 3D models are
 required, as it is important to simulate the circulation patterns which can
-impact lake temperature as well as ice onset melt dates and fractional coverage,
+impact lake temperature as well as ice onset/melt dates and fractional coverage,
 and therefore heavy lake-effect snow (HLES) as suggested by recent studies. The
 aim of this study is to compare HLES simulated by a regional climate model
 (CRCM5: Canadian Regional Climate Model) with 1D and 3D models for the Great
 Lakes, and to assess projected changes to HLES in a future warmer climate.
 
-For comparing the impact of 3D lakes, two CRCM5 simulations, using 1D (Hostetler
+To compare the impact of 3D lakes, two CRCM5 simulations, using 1D (Hostetler
 model) and 3D (NEMO) lake models, driven by ERA-Interim reanalysis are performed
 and analysed over the Great Lakes region for the 1979–2012 period at 10 km
 resolution. Lake ice cover is overestimated in the simulation with 1D lake model
@@ -158,7 +157,7 @@ triggering these extreme events.
 %
 This study is based on the comparison of two CRCM5 simulations (Table \ref{table:simulations}) performed over the Laurentian Great Lakes (Fig.~\ref{figure:simdomain}).\\[1cm]
 %
-\adjustbox{valign=t, minipage=0.45\linewidth}{
+\adjustbox{valign=t, minipage=0.4\linewidth}{
     \centering
     \includegraphics[width=\linewidth]{figures/domain_and_experiments}
     \captionof{figure}{\label{figure:simdomain}\color{Green} Simulation domain and configuration schemes}
@@ -166,7 +165,7 @@ This study is based on the comparison of two CRCM5 simulations (Table \ref{table
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.50\linewidth}{
+\adjustbox{valign=t, minipage=0.55\linewidth}{
   \footnotesize
   \begin{tabularx}{\linewidth}{lX}
   \toprule
@@ -188,8 +187,8 @@ This study is based on the comparison of two CRCM5 simulations (Table \ref{table
   \begin{itemize}
     \item Simulation period: 1979--2010
     \item Horizontal grid size and resolution: 452$\times$260, \textbf{0.1$^\circ$};
-    \item CRCM5 time step: 5 min;
-    \item 1D Lake model: Hostetler;
+    \item CRCM5 time step: 5 min; NEMO time step: 30 min;
+    \item Surface scheme: \textbf{CLASS3.5}; 1D Lake model: \textbf{Hostetler};
     \item NEMO model is used in the Great Lakes in CRCM5\_NEMO, where LIM3 is used for lake ice;
     \begin{itemize}
         \footnotesize
@@ -198,10 +197,6 @@ This study is based on the comparison of two CRCM5 simulations (Table \ref{table
               calculate ice concentration in a grid cell as a weighted mean over the thickness bins using the
               modelled distribution.
     \end{itemize}
-
-
-    \item NEMO time step: 30 min;
-    \item Surface scheme: CLASS3.5;
     \item Lateral boundary conditions: ERA-Interim, 0.75$^\circ$
   \end{itemize}
   \end{tcolorbox}
@@ -212,9 +207,11 @@ This study is based on the comparison of two CRCM5 simulations (Table \ref{table
 \textbf{HLES: Observations}\\
 To diagnose observed HLES, we follow \citet{notaro2015} using the following gridded datasets:
     \begin{itemize}
+        \footnotesize
         \item Temperature and precipitation, required to calculate snowfall, considered
               to be heavy if greater than 10 cm/day, are taken from high resolution datasets
-              for Canada  \citep[10km, ][]{hopkinson2011} and the U.S. \citep[0.125$^\circ$, ][]{maurer2002}. Snowfall is examined within the 100km region around the shores of the Great Lakes and it is also
+              for Canada  \citep[10km, ][]{hopkinson2011} and the U.S. \citep[0.125$^\circ$, ][]{maurer2002}.
+              Snowfall is examined within the 100km region around the shores of the Great Lakes and it is also
               required to be greater than the mean over the non-local region of the  by 4 cm/day, i.e. locally enhanced.
         \item Ice concentration, required to eliminate impact of frozen lakes, i.e. if ice
               concentration is greater than 70\%, are taken from the extended Great Lakes ice
@@ -236,13 +233,13 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 
 %%%2m air temp and LSWT validation
 \begin{center}
-    \includegraphics[width=\linewidth]{figures/t2m_bias_crcm5_hl_vs_crcm5_nemo}
+    \includegraphics[width=\linewidth, trim={0 0 0 3.9cm}, clip]{figures/t2m_bias_crcm5_hl_vs_crcm5_nemo}
     \captionof{figure}{\label{figure:t2mvalidation}\color{Green} Seasonal 2m air temperature ($^\circ$C) from \citet{hopkinson2011} and \citet{maurer2002} for the 1980-2010 period (first row),
     seasonal mean biases in the CRCM5\_HL (second row) and differences between CRCM5\_NEMO and CRCM5\_HL-simulated 2m air temperature (third row).}
 \end{center}
 
 \begin{center}
-    \includegraphics[width=\linewidth]{figures/sst_validation_crcm5nemo_crcm5hl}
+    \includegraphics[width=\linewidth, trim={0 0 0 4cm}, clip]{figures/sst_validation_crcm5nemo_crcm5hl}
     \captionof{figure}{\label{figure:sstvalidation}\color{Green} Seasonal lake surface water temperature ($^\circ$C) from NOAA OISST (first row),
     seasonal mean biases in the CRCM5\_HL (second row) and seasonal mean biases in the CRCM5\_NEMO (third row) for the 2003-2010.}
 \end{center}
@@ -261,7 +258,7 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 
 
 \adjustbox{valign=t, minipage=0.48\linewidth}{
-  \includegraphics[width=\linewidth]{seasonal_biases_lake_ice_fraction_February-March_1980-2010}
+  \includegraphics[width=\linewidth, trim={0 0 0 3.9cm}, clip]{seasonal_biases_lake_ice_fraction_February-March_1980-2010}
   \captionof{figure}{\label{figure:ice2dvalidation}\color{Green} Mean February and March ice fraction from the extended Gret Lakes ice atlas, available from GLERL website, (first row), ice fraction biases in
   the CRCM5\_HL simulation (second row) and ice fraction differences between CRCM5\_NEMO and CRCM5\_HL simulations (third row) for the 1980-2010 period.}
 }
@@ -269,7 +266,7 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 \hfill
 %
 \adjustbox{valign=t, minipage=0.48\linewidth}{
-  \includegraphics[width=\linewidth]{seasonal_biases_total_prec_Winter-Summer_1980-2010}
+  \includegraphics[width=\linewidth, trim={0 0 0 3.9cm}, clip]{seasonal_biases_total_prec_Winter-Summer_1980-2010}
   \captionof{figure}{\label{figure:precipvalidation}\color{Green} Seasonal total precipitation (mm/day) from \citet{hopkinson2011} and \citet{maurer2002} for the 1980-2010 period (first row),
   seasonal mean biases in the CRCM5\_HL (second row) and differences between CRCM5\_NEMO and CRCM5\_HL-simulated total precipitation (third row).}
 }
@@ -283,19 +280,23 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 \end{itemize}
 
 
-
-
 \noindent
-\adjustbox{valign=t, minipage=\linewidth}{
+\adjustbox{valign=t, minipage=0.6\linewidth}{
   \noindent
+  \center
   \includegraphics[width=\linewidth]{figures/crcm5_nemo_surface_currents}
   \captionof{figure}{\color{Green} Mean seasonal surface currents (m/s) simulated by CRCM5\_NEMO for the 1980-2010 period.}
 }
+%
+\hfill
+%
+\adjustbox{valign=t, minipage=0.4\linewidth}{
 \begin{itemize}
   \item Strongest surface currents are noted in winter, which corresponds to the result in \citet{dupont2012}.
   \item Keweenav current (southern part of lake Superior in summer) is captured with the maximum speed
   between 6-8 cm/s (maximum speed in the current simulated by \citet{dupont2012} is 7 cm/s).
 \end{itemize}
+}
 
 
 \subsection*{C.2 Impacts of the 3D parametrization of the Great Lakes on simulated HLES: spatial distribution and inter-annual variability}
@@ -305,7 +306,7 @@ The HLES events are diagnosed from the model outputs using the same approach as 
   \includegraphics[width=\linewidth]{figures/hles_clim_NDJ}
   \captionof{figure}{\color{Green}\label{figure:hlesspatial} Mean number of HLES days during November-January for the 1980-2010 period derived from observations (left),
   CRCM5\_NEMO (middle) and CRCM5\_HL (right) simulation outputs.}
-\end{minipage} \\[0.5cm]
+\end{minipage} \\[0.15cm]
 
 
 \begin{itemize}
@@ -315,9 +316,8 @@ The HLES events are diagnosed from the model outputs using the same approach as 
         CRCM5\_NEMO (Fig.~\ref{figure:hlesspatial}).
 \end{itemize}
 
-
-
-\adjustbox{valign=t, minipage=0.6\linewidth}{
+\noindent
+\adjustbox{valign=t, minipage=0.4\linewidth}{
   \includegraphics[width=\linewidth]{area_avg_boxplots_snow_fall}
   \captionof{figure}{\color{Green} \label{figure:hlesinterannual} Distributions of area-averaged HLES (cm) during November-January
   from observations, CRCM5\_NEMO and CRCM5\_HL respectively for the 1980-2010 period.}
@@ -325,17 +325,16 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.4\linewidth}{
+\adjustbox{valign=t, minipage=0.55\linewidth}{
 \noindent
-\begin{itemize}
-  \item Simulated mean and inter-annual variability of HLES is improved in CRCM5\_NEMO, although it is still underestimated (Fig.~\ref{figure:hlesinterannual}).
-  The correlation of CRCM5\_NEMO (CRCM5\_HL)-based HLES with the observation-based HLES is 0.72 (-0.10).
-\end{itemize}
+Simulated mean and inter-annual variability of HLES is improved in CRCM5\_NEMO, although it is still
+underestimated (Fig.~\ref{figure:hlesinterannual}). The correlation of CRCM5\_NEMO (CRCM5\_HL)-based HLES
+with the observation-based HLES is 0.72 (-0.10).
 }
 
 
 \noindent
-\adjustbox{valign=t, minipage=0.55\linewidth}{
+\adjustbox{valign=t, minipage=0.4\linewidth}{
   \includegraphics[width=\linewidth]{hles_histo_all_m11_12_1}
   \captionof{figure}{\color{Green} \label{figure:hlesmonthly} Monthly area-averaged HLES (\%) during November,
   December and January from observations, CRCM5\_NEMO and CRCM5\_HL respectively for the 1980-2010 period.}
@@ -343,20 +342,21 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-  \begin{itemize}
-      \item Distributions of HLES over months within the period of interest (Nov-Jan, Fig.~\ref{figure:hlesmonthly})
-      suggest that the fractions of HLES from observations and CRCM5\_NEMO are similar and increase from November to January. The distribution of HLES for CRCM5\_HL
-      is quite different from the observed one, due to
-      the negative lake water temperature biases in winter (Fig.~\ref{figure:sstvalidation}) and overestimated lake ice fractions (Fig.~\ref{figure:ice2dvalidation}), which lead
-      to the shift of the majority of the HLES events to the onset period.
-  \end{itemize}
+\adjustbox{valign=t, minipage=0.55\linewidth}{
+      Distributions of HLES over months within the period of interest (Nov-Jan,
+      Fig.~\ref{figure:hlesmonthly}) suggest that the fractions of HLES from
+      observations and CRCM5\_NEMO are similar and increase from November to January.
+      The distribution of HLES for CRCM5\_HL is quite different from the observed one,
+      due to the negative lake water temperature biases in winter
+      (Fig.~\ref{figure:sstvalidation}) and overestimated lake ice fractions
+      (Fig.~\ref{figure:ice2dvalidation}), which lead to the shift of the majority of
+      the HLES events to the onset period.
 }
 
 \subsection*{C.3 Linking HLES to large scale circulation patterns}
 
 \noindent
-\adjustbox{valign=t, minipage=0.55\linewidth}{
+\adjustbox{valign=t, minipage=0.40\linewidth}{
   \centering
   \includegraphics[width=\linewidth]{hles_wind_compoosits}
   \captionof{figure}{\color{Green} \label{figure:hles_high_minus_low_composite} Differences between the composites of sea level pressure (surface wind) from ERA-Interim reanalysis based
@@ -366,34 +366,32 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-\begin{itemize}
-  \item Extreme high (low) HLES events are associated with the following two
+\adjustbox{valign=t, minipage=0.55\linewidth}{
+        Extreme high (low) HLES events are associated with the following two
         surface circulation anomalies: weakening (amplification) of the Aleutian low
         and cyclonic (anticyclonic) anomaly over Hudson Bay. These anomalies
         (anticyclonic over Aleutian islands and cyclonic over northern part of Hudson
         Bay) favor and steer the north westerly flow of cold air in the direction of
         the Great Lakes, thereby favoring the occurrences of HLES
         (Fig.~\ref{figure:hles_high_minus_low_composite}).
-\end{itemize}
 }
 
-\subsection*{C.4 Monthly distribution of mean HLES}
+\subsection*{C.4 Monthly distribution of mean HLES in current and future climates}
+
+
 \noindent
-\adjustbox{valign=t, minipage=0.55\linewidth}{
-  \centering
-  \includegraphics[width=\linewidth]{figures/hles_area_avg_cc}
+\adjustbox{valign=t, minipage=\linewidth}{
+  \begin{center}
+        \includegraphics[width=\linewidth]{figures/hles_area_avg_cc}
+  \end{center}
+}
+
+\adjustbox{valign=t, minipage=\linewidth}{
   \captionof{figure}{\color{Green} \label{figure:hles_monthly_distribution} (a) Monthly distributions of HLES in current (blue) and future (red) climates
     in \% of the total seasonal HLES. (b) Monthly distribution of the projected changes to HLES in \% of the current HLES amount for a given month.
+    The projections are calculated from two 22-year CRCM5\_NEMO simulations driven by outputs from the second generation of Canadian Earth System Model.
+    CRCM5\_NEMOc corresponds to the 1989--2010 period and CRCM5\_NEMOf corresponds to the 2079--2100 period.
   }
-}
-%
-\hfill
-%
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-\begin{itemize}
-  \item Discussion of (Fig.~\ref{figure:hles_monthly_distribution}).
-\end{itemize}
 }
 
 %----------------------------------------------------------------------------------------
@@ -415,9 +413,8 @@ The HLES events are diagnosed from the model outputs using the same approach as 
         ice, which highlights the importance of large lake parameterization different
         from that for smaller lakes for better representation of the physical processes
         leading to HLES events.
-  \item In future, it is planned to perform transient climate change simulations with
-        the improved 3D large lake parameterization to study the projected changes to
-        HLES characteristics.
+  \item Total cold season HLES is projected to decrease in the region in future by around 30\%. But the changes are not
+        uniform in time. The results show that an increase in HLES is expected during January-February in future.
   \end{itemize}
 }
 %\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
