@@ -40,6 +40,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{tikz}
 
+\usepackage{makecell}
+
+
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=false
@@ -171,8 +174,10 @@ This study is based on the comparison of two CRCM5 simulations (Table \ref{table
   \toprule
   \textbf{Simulation}    & \textbf{Description}\\
   \midrule
-  \textbf{CRCM5\_HL}     & ERA-Interim (0.75$^\circ$) reanalysis-driven, all lakes are modelled by Hostetler (1D) lake model \\[0.5cm]
-  \textbf{CRCM5\_NEMO}   & ERA-Interim (0.75$^\circ$) reanalysis-driven, the Great Lakes are modelled by NEMO (3D) ocean model, other lakes in the region are modelled by Hostetler (1D) lake model \\
+  \makecell[tl]{\textbf{CRCM5\_HL}\\ 1979--2010}    & ERA-Interim (0.75$^\circ$) reanalysis-driven, all lakes are modelled by Hostetler (1D) lake model. \\[0.5cm]
+  \makecell[tl]{\textbf{CRCM5\_NEMO}\\ 1979--2010}   & ERA-Interim (0.75$^\circ$) reanalysis-driven, the Great Lakes are modelled by NEMO (3D) ocean model, other lakes in the region are modelled by Hostetler (1D) lake model. \\[0.5cm]
+  \makecell[tl]{\textbf{CRCM5\_NEMOc}\\ 1989--2010}  & Similar to \textbf{CRCM5\_NEMO}, but driven by CanESM2 outputs.\\[0.5cm]
+  \makecell[tl]{\textbf{CRCM5\_NEMOf}\\ 2079--2100}  & Similar to \textbf{CRCM5\_NEMO}, but driven by CanESM2 outputs. \\
   \bottomrule
   \end{tabularx}
   \captionof{table}{\label{table:simulations}\color{Green} List of simulations used in the current study}
@@ -185,7 +190,6 @@ This study is based on the comparison of two CRCM5 simulations (Table \ref{table
   \flushleft
   \small
   \begin{itemize}
-    \item Simulation period: 1979--2010
     \item Horizontal grid size and resolution: 452$\times$260, \textbf{0.1$^\circ$};
     \item CRCM5 time step: 5 min; NEMO time step: 30 min;
     \item Surface scheme: \textbf{CLASS3.5}; 1D Lake model: \textbf{Hostetler};
@@ -241,7 +245,16 @@ The HLES events are diagnosed from the model outputs using the same approach as 
 \end{center}
 
 \begin{center}
-    \includegraphics[width=\linewidth, trim={0 0 0 4cm}, clip]{figures/sst_validation_crcm5nemo_crcm5hl}
+
+  \begin{tikzpicture}
+    \node (plot) {\includegraphics[width=\linewidth, trim={0 0 0 4cm}, clip]{figures/sst_validation_crcm5nemo_crcm5hl}};
+    \node (winter)[font={\sffamily\footnotesize}, below right=5cm and 6cm of plot.north west, anchor=south west] {Winter};
+    \node (spring)[font={\sffamily\footnotesize}, right=4cm of winter.east, anchor=west] {Spring};
+    \node (summer)[font={\sffamily\footnotesize}, right=4cm of spring.east, anchor=west] {Summer};
+    \node (fall)[font={\sffamily\footnotesize}, right=4cm of summer.east, anchor=west] {Fall};
+
+  \end{tikzpicture}
+
     \captionof{figure}{\label{figure:sstvalidation}\color{Green}
     Seasonal biases of lake surface water temperature ($^\circ$C) in CRCM5\_HL (first row) and seasonal mean biases in the CRCM5\_NEMO (secod row) for the 2003--2010
     compared to lake surface water temperature ($^\circ$C) from NOAA OISST.}
