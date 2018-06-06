@@ -161,9 +161,11 @@ extremes for elevated regions by 0.5–1 mm/day.
 \section*{(B) Methods and experiment configurations}
 %\subsection*{C.1 Methods}
 %
-This study is based on the comparison of three CRCM5 simulations (Table \ref{table:simulations}) performed over western Canada.\\[1cm]
+This study is based on the comparison of three CRCM5 simulations (Table \ref{table:simulations}) performed over western Canada.
+To validate mean and extreme 2m air temperature and precipitation, daily DAYMET dataset \citet{thornton1997}, aggregated from the original 1km grid to the corresponding
+model resolution (i.e. 0.44$^\circ$ and 0.11$^\circ$) is used. \\[1cm]
 %
-\adjustbox{valign=t, minipage=\linewidth}{
+\adjustbox{valign=t, minipage=0.45\linewidth}{
   \footnotesize
   \begin{tabularx}{\linewidth}{lX}
   \toprule
@@ -176,16 +178,16 @@ This study is based on the comparison of three CRCM5 simulations (Table \ref{tab
   \end{tabularx}
   \captionof{table}{\label{table:simulations}\color{Green} List of simulations used in the current study}
 }
-
-\vspace{0.5cm}
-\noindent
-\adjustbox{valign=m, minipage=\linewidth}{
+%
+\hfill
+%
+\adjustbox{valign=t, minipage=0.5\linewidth}{
   \begin{tcolorbox}[colback=white,colframe=green!40!black, adjusted title={Model configurations}]
   \flushleft
   \small
   \begin{itemize}
     \item Simulation period: 1980--2010
-    \item Horizontal grid size and resolution: 452$\times$260 (0.11$^\circ$);
+    \item Horizontal grid size and resolution: 131$\times$125 (0.44$^\circ$); 404$\times$380 (0.11$^\circ$);
     \item CRCM5 time step: 5 min (0.11$^\circ$) and 20 min (0.44$^\circ$);
     \item 1D Lake model: FLake;
     \item Surface scheme: CLASS;
@@ -199,8 +201,13 @@ This study is based on the comparison of three CRCM5 simulations (Table \ref{tab
 Below is the summary of the changes to the default model configuration evaluated in this study.
 
 \noindent
-\textbf{Dynamic vegetation} is the module responsible for simulation of carbon pools and
-two way interactions of vegetation and climate. The model used for this parameterization is CTEM ().
+\textbf{Dynamic vegetation} is the module responsible for simulation
+of carbon pools and two-way interactions of vegetation and climate. The model
+used for this parameterization is the Canadian Terrestrial Ecosystem Model
+\citep[CTEM, ][]{melton2016}. CTEM uses soil moisture, soil temperature and net
+radiation calculated by CLASS. It provides back leaf and stem biomasses for PAI
+calculations. Furthermore, CTEM models vegetation height, which is used to calculate
+roughness for the vegetated parts of a grid cell.
 
 \noindent
 \textbf{Hydraulic conductivity of frozen soil} is modified based on ... Expected impact is ...
@@ -233,7 +240,6 @@ two way interactions of vegetation and climate. The model used for this paramete
 
 \section*{(C) Results}
 \subsection*{C.1 Impact of added parameterizations on seasonal mean fields}
-%%%2m air temp and LSWT validation
 \noindent
 \begin{minipage}[t]{\linewidth}
 \begin{tikzpicture}
@@ -363,7 +369,7 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 
 \begin{minipage}[t]{\linewidth}
 \center
-\includegraphics[width=0.7\linewidth]{figures/domain_and_focus_for_meridional_avg}
+\includegraphics[width=0.5\linewidth]{figures/domain_and_focus_for_meridional_avg}
 \captionof{figure}{\color{Green} Topography field (m) is shown in colors. Black rectangle is showing the region of meridional averaging.}
 \end{minipage}
 
