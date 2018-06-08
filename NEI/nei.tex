@@ -56,7 +56,7 @@
 \usepackage[skins,listings,breakable,listingsutf8,theorems,hooks,fitting]{tcolorbox}
 \tcbuselibrary{raster}
 
-\newcommand{\hspc}{0cm}
+\newcommand{\hspc}{-0.5cm}
 \newcommand{\wspc}{-0.5cm}
 
 \begin{document}
@@ -85,7 +85,7 @@
 %
 \begin{minipage}[c]{0.45\linewidth}
   \center
-  \large \textbf{Huziy O., Sushama L., Teufel B., Duarte L., Ruman C.} \\[0.5cm]
+  \large \textbf{Huziy O., Sushama L., Teufel B., Duarte L., Ruman C.} \\[0.25cm]
   \large \texttt{Contact email: guziy.sasha@gmail.com}
 \end{minipage}
 %
@@ -142,7 +142,7 @@ extremes for elevated regions by 0.5–1 mm/day.
 %----------------------------------------------------------------------------------------
 
 %\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
-\vspace{1cm}
+\vspace{0.25cm}
 \begin{tcolorbox}[colback=white,colframe=green!40!black,adjusted title={Main objectives}]
   \begin{enumerate}
   \item Evaluate the net impact of the improved CRCM5 model, resulted from adding
@@ -165,13 +165,13 @@ This study is based on the comparison of three CRCM5 simulations (Table \ref{tab
 To validate mean and extreme 2m air temperature and precipitation, daily DAYMET dataset \citet{thornton1997}, aggregated from the original 1km grid to the corresponding
 model resolution (i.e. 0.44$^\circ$ and 0.11$^\circ$) is used. \\[1cm]
 %
-\adjustbox{valign=t, minipage=0.45\linewidth}{
+\adjustbox{valign=t, minipage=0.55\linewidth}{
   \footnotesize
   \begin{tabularx}{\linewidth}{lX}
   \toprule
   \textbf{Simulation}    & \textbf{Description}\\
   \midrule
-  \textbf{WC\_044\_default}    & Default model before implementation of the enhancements (dynamic vegetation, glaciers and hydraulic conductivity of frozen soil) at 0.44$^\circ$ horizontal grid spacing\\[0.5cm]
+  \textbf{WC\_044\_default}    & Default model before implementation of the enhancements at 0.44$^\circ$\\[0.5cm]
   \textbf{WC\_044\_modified}   & With parameterization enhancements at 0.44$^\circ$ \\[0.5cm]
   \textbf{WC\_011\_modified}   & With parameterization enhancements at 0.11$^\circ$\\
   \bottomrule
@@ -181,24 +181,22 @@ model resolution (i.e. 0.44$^\circ$ and 0.11$^\circ$) is used. \\[1cm]
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.5\linewidth}{
-  \begin{tcolorbox}[colback=white,colframe=green!40!black, adjusted title={Model configurations}]
+\adjustbox{valign=t, minipage=0.4\linewidth}{
+  \begin{tcolorbox}[colback=white,colframe=green!40!black, adjusted title={Experiment setup}]
   \flushleft
   \small
   \begin{itemize}
     \item Simulation period: 1980--2010
-    \item Horizontal grid size and resolution: 131$\times$125 (0.44$^\circ$); 404$\times$380 (0.11$^\circ$);
     \item CRCM5 time step: 5 min (0.11$^\circ$) and 20 min (0.44$^\circ$);
-    \item 1D Lake model: FLake;
     \item Surface scheme: CLASS;
     \item Lateral boundary conditions: ERA-Interim, 0.75$^\circ$
   \end{itemize}
   \end{tcolorbox}
 }
 
-\vspace{0.5cm}
+\vspace{0.25cm}
 
-Below is the summary of the changes to the default model configuration evaluated in this study.
+\subsection*{Summary of enhancements to the default model configuration}
 
 \noindent
 \textbf{Dynamic vegetation} enhancement is the module responsible for simulation
@@ -206,14 +204,17 @@ of carbon pools and two-way interactions of vegetation and climate, which allows
 to simulate inter-annual variability of vegetation properties as well as its
 structure, i.e. temporal evolution of extents of various vegetation types.
 The model used for this parameterization is the Canadian Terrestrial Ecosystem
-Model \citep[CTEM, ][]{melton2016}. CTEM uses soil moisture, soil temperature
-and net radiation calculated by CLASS. It provides back leaf and stem biomasses
-for PAI calculations. Furthermore, CTEM models vegetation height, which is used
-to calculate roughness for the vegetated parts of a grid cell.
+Model \citep[CTEM, ][]{melton2016}.
 
+\vspace{0.25cm}
 \noindent
-\textbf{Hydraulic conductivity of frozen soil} is modified based on ... Expected impact is ...
+\textbf{Hydraulic conductivity of frozen soil} is modified based on \citet{ganji2017}. It takes into account frozen water fraction in the
+formula for soil hydraulic conductivity and as a result reduces it by a factor of $(1 + \theta_i \cdot C_k)^{-4}$ ($\theta_i$ - volumetric
+fraction of frozen water in soil, $C_k$ - constant parameter). This modification is expected to decrease soil hydraulic conductivity during transition seasons (i.e. spring and summer) and
+lead to enhancement of surface runoff.
 
+\vspace{0.25cm}
+\noindent
 \adjustbox{valign=t, minipage=0.48\linewidth}{
     \textbf{Dynamic glaciers}. The implementation of dynamic glaciers is inspired by \citet{kotlarski2009}. The parameterization
     uses high resolution elevation datasets to divide sub-grid glaciers into elevation bins and uses
@@ -228,7 +229,7 @@ to calculate roughness for the vegetated parts of a grid cell.
   \includegraphics[width=\linewidth]{figures/glacier_fraction}
   \captionof{figure}{\label{figure:glacier_fraction}\color{Green} Spatial extent of glacier fractions used as initial conditions for
                       the WC\_044\_modified and WC\_011\_modified configurations. Based on Randolph
-                      Glacier Innventory (RGI) global dataset.}
+                      Glacier Inventory (RGI) global dataset.}
 }
 
 
@@ -287,52 +288,82 @@ to calculate roughness for the vegetated parts of a grid cell.
 \begin{itemize}
   \item DJF and SON 2m-air temperature and total precipitation are not significantly
   affected by the new parameterizations (See Figures \ref{figure:t2mvalidation} and \ref{figure:prvalidation}).
+
+  \item The colder bias in WC\_044\_modified during MAM is caused by the slower growth rate in the vegetation scheme, which leads to higher albedos and cooler temperatures during MAM.
+
   \item Although MAM season air temperature cold bias is larger in WC\_044\_modified with respect to WC\_044\_default,
   significant decreases of wet biases in MAM total precipitation in the southwestern part of the domain are noted for  WC\_044\_modified.
-  The cold bias in the MAM temperatures is caused by the slow growth rate in the vegetation scheme, which leads to higher albedos and cooler temperatures during MAM.
+
   \item The new parameterizations produce warmer 2m-air temperatures in the southern part
   of the domain leading to larger positive biases in the southwestern and removing negative biases in
   southeastern parts of the domain.
-  \item JJA precipitation is slightly worse in WC\_044\_modified with respect to
-  the default configuration in the southeastern part of the domain.
+  \item JJA precipitation is worse in WC\_044\_modified with respect to
+  the default configuration in the southeastern part of the domain. This could be explained by the compensation of errors, which
+  occurred in WC\_044\_default, where wet bias from spring eliminated eliminated the dry biases in summer. But in WC\_044\_modified the
+  MMA wet bias is corrected and the soil is not wet enough to eliminate the dry bias during JJA season.
 \end{itemize}
 
 \subsection*{C.2 Impact of resolution on seasonal mean 2m-air temperature and total precipitation simulated by the improved model}
 \noindent
 \begin{minipage}[t]{\linewidth}
+In this section the seasonal 2m air temperature and precipitation biases of
+WC\_011\_modified are discussed and compared with the biases of
+WC\_044\_modified (shown in the previous section,
+Figs.~\ref{figure:t2mvalidation}--\ref{figure:prvalidation}).
+\begin{center}
 \begin{tikzpicture}
       \node (wc044default) {
-        \includegraphics[width=0.95\linewidth, trim={0.3cm 0.1cm 0 0.1cm}, clip]{figures/seasonal_mean_TT_bias_wc_011_modified}
+        \includegraphics[width=0.8\linewidth, trim={0.3cm 0.1cm 0 0.1cm}, clip]{figures/seasonal_mean_TT_bias_wc_011_modified}
       };
       \node[left=0.8cm of wc044default, rotate=90, anchor=north, scale=0.8] (wc011modified_label) {WC\_011\_modified};
+      \node[below= -1cm of wc044default.south west,text width=0.8\linewidth, align=left, anchor=north west]{
+        \captionof{figure}{\label{figure:t2mvalidation011}\color{Green} Same as the second
+                           row in Figure \ref{figure:t2mvalidation} but for WC\_011\_modified ($^\circ$C).}
+      };
 \end{tikzpicture}
-
-\captionof{figure}{\label{figure:t2mvalidation011}\color{Green} Same as the second
-                   row in Figure \ref{figure:t2mvalidation} but for WC\_011\_modified ($^\circ$C).}
+\end{center}
 \end{minipage}
 
 
 \noindent
 \begin{minipage}[t]{\linewidth}
+\centering
 \begin{tikzpicture}
-      \node (wc044default) {
-        \includegraphics[width=0.95\linewidth, trim={0.33cm 0.1cm 0 0.1cm}, clip]{figures/seasonal_mean_PR_bias_wc_011_modified}
+      \node (wc011modified) {
+        \includegraphics[width=0.8\linewidth, trim={0.33cm 0.1cm 0 0.1cm}, clip]{figures/seasonal_mean_PR_bias_wc_011_modified}
       };
-      \node[left=0.8cm of wc044default, rotate=90, anchor=north, scale=0.8] (wc011modified_label) {WC\_011\_modified};
-\end{tikzpicture}
+      \node[left=0.8cm of wc011modified, rotate=90, anchor=north, scale=0.8] (wc011modified_label) {WC\_011\_modified};
 
-\captionof{figure}{\label{figure:prvalidation011}\color{Green} Same as the second
-                   row in Figure \ref{figure:prvalidation} but for WC\_011\_modified (mm/day).}
+      \node[below=-1cm of wc011modified.south west, anchor=north west, text width=0.8\linewidth, align=flush left]{
+        \captionof{figure}{\label{figure:prvalidation011}\color{Green} Same as the second
+                           row in Figure \ref{figure:prvalidation} but for WC\_011\_modified (mm/day).}
+      };
+\end{tikzpicture}
 \end{minipage}
 
+\begin{itemize}
+  \item Increasing resolution of the modified configuration from 0.44$^\circ$ to 0.11$^\circ$ leads to warmer 2m air temperatures and decreased DJF, MAM and SON temperature biases.
+  Although the positive JJA biases in the southern part of the domain are amplified in WC\_011\_modified with respect to WC\_044\_modified.
+
+  \item The positive MAM precipitation bias in the southern part of the domain,
+        which was fixed in WC\_044\_modified reappears in WC\_011\_modified and
+        eliminates the dry bias in JJA. The MAM total precipitation overestimation in WC\_011\_modified could
+        be caused by warmer temperature, which allow more intensive recycling of soil moisture.
+
+  \item Total precipitation is overestimated in WC\_011\_modified over northern parts of
+        the domain for all seasons with respect to DAYMET dataset. Although the
+        reliability of the observation dataset in the northern region should be taken
+        into consideration given the scarcity of the station data in the northern parts
+        of the domain.
+\end{itemize}
 
 
 \subsection*{C.3 Impact of added parameterizations and of resolution on simulated daily extremes}
 
-To evaluate the impacts of the model modifications on simulated daily extremes the 90th percentile of
+To evaluate impacts of the model modifications on simulated daily extremes the 90th percentile of
 daily minimum temperature (TN90), 10th percentile of daily maximum temperature (TX10) and 90th percentile of
-daily mean total precipitation (PR90) are averaged over land and the time series are compared for WC\_044\_default and
-WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
+daily mean total precipitation (PR90) are averaged over land and the time series are compared for WC\_044\_default,
+WC\_044\_modified and WC\_011\_modified. The indices are calculated as in \citet{curry2016}.
 
 \noindent
 \begin{minipage}[t]{\linewidth}
@@ -359,10 +390,9 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 \end{tikzpicture}
 \end{minipage}
 
-
 \begin{itemize}
-    \item Discussion
-
+ \item As discussed in the previous section, the over recycling of soil moisture in spring causes wet biases in WC\_011\_modified.
+ \item The slower growth rate of the vegetation in spring appears to be corrected by the increased resolution in WC\_011\_modified compared to WC\_044\_modified.
 \end{itemize}
 
 \subsection*{C.4 Zonal structure of the daily extremes in a region with complex topography}
@@ -374,23 +404,27 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.3\linewidth}{
-  \captionof{figure}{\color{Green} Topography field (m) is shown in colors. Black rectangle is showing the region of meridional averaging.}
+\adjustbox{valign=t, minipage=0.25\linewidth}{
+  \captionof{figure}{\color{Green}\label{topofig} Topography field (m) is shown in colors.
+  Black rectangle is showing the region of meridional averaging.}
 }
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-  Discussion
+\adjustbox{valign=t, minipage=0.5\linewidth}{
+  To assess performance of the model configurations in the environment with
+  complex topography, extreme indices, averaged along meridians, over land points
+  inside the region shown in Fig.~\ref{topofig} are analyzed.
 }
 
+\vspace{0.25cm}
 \noindent
 \begin{minipage}[t]{\linewidth}
 \begin{center}
 
 \begin{tikzpicture}
     % TX10
-    \node[label={\small TX10 ($^\circ$C)}, label={[rotate=90, anchor=south, yshift=-0.5cm]left:\small DJF}] (tx10_djf) {
+    \node[label={[yshift=-0.5cm]\small TX10 ($^\circ$C)}, label={[rotate=90, anchor=south, yshift=-0.5cm]left:\small DJF}] (tx10_djf) {
       \includegraphics[width=0.31\linewidth, trim={0 8cm 0 0cm}, clip]{figures/meridional_avg/DJF_t_air_2m_daily_max}
     };
 
@@ -409,7 +443,7 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
 
 
     %TN90
-    \node[label={\small TN90}, right=\wspc of tx10_djf.east, anchor=west] (tn90_djf) {
+    \node[label={[yshift=-0.5cm]\small TN90 ($^\circ$C)}, right=\wspc of tx10_djf.east, anchor=west] (tn90_djf) {
       \includegraphics[width=0.31\linewidth, trim={0 8cm 0 0cm}, clip]{figures/meridional_avg/DJF_t_air_2m_daily_min}
     };
 
@@ -426,7 +460,7 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
     };
 
     %PR90
-    \node[label={\small PR90}, right=\wspc of tn90_djf] (pr90_djf) {
+    \node[label={[yshift=-0.5cm]\small PR90 (mm/day)}, right=\wspc of tn90_djf] (pr90_djf) {
       \includegraphics[width=0.31\linewidth, trim={0 8cm 0 0cm}, clip]{figures/meridional_avg/DJF_total_prec}
     };
 
@@ -462,10 +496,20 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
       WC\_044\_modified (orange) and WC\_011\_modified (green). The biases are calculated using DAYMET observation dataset.
       }
     };
-
-
 \end{tikzpicture}
 \end{center}
+\end{minipage}
+
+\vspace{0.25cm}
+% discussion of the meridional means  of the extremes
+\noindent
+\begin{minipage}[t]{\linewidth}
+  \begin{itemize}
+      \item Overall, the best performance in simulating the extreme indices over the complex
+            topography is shown by the WC\_011\_modified model configuration. Moreover for TX10 and TN90, WC\_011\_modified performs better
+            for all considered latitudes. The WC\_011\_modified is obviously the worst only for PR90 in the west part of the considered box,
+            i.e. upwind of the complex topography region, where the total precipitation is overestimated with respect to the DAYMET dataset.
+  \end{itemize}
 \end{minipage}
 
 
@@ -483,7 +527,6 @@ WC\_044\_modified. The indices are calculated as in \citet{curry2016}.
   glaciers and frozen soil hydraulic conductivity were evaluated over the region of western Canada at 0.44$^\circ$ and 0.11$^\circ$ resolutions.
   \item It is recognized that the modified configurations are not tuned as extensively as the default one and therefore
   some added value is still expected to be gained after the model is retuned.
-  \item Conclusion...
   \end{itemize}
 }
 %\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
