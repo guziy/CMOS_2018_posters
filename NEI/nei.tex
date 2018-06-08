@@ -75,10 +75,10 @@
 
 \noindent\begin{minipage}[b]{\linewidth}
 \centering
-\noindent \huge \color{NavyBlue} \textbf{Collective assessment of a set of improvements to surface process parameterizations in CRCM5 over Western Canada} \color{Black}\\[0.25cm] % Title
+\noindent \huge \color{NavyBlue} \textbf{Collective assessment of a set of improvements to surface process parameterizations in CRCM5 over Western Canada} \color{Black}\\[0.15cm] % Title
 \noindent\begin{minipage}[c]{0.25\linewidth}
       \center
-      \includegraphics[width=8cm, align=c]{logo_cnrcwp.png} \includegraphics[width=8cm, align=c]{nserc_narrow} \includegraphics[width=8cm,align=c]{compute_canada_transparent_small}% Logo or a photo of you, adjust its dimensions here
+      \includegraphics[width=7cm, align=c]{logo_cnrcwp.png} \includegraphics[width=7cm, align=c]{nserc_narrow} \includegraphics[width=7cm,align=c]{compute_canada_transparent_small}% Logo or a photo of you, adjust its dimensions here
 \end{minipage}
 %
 \hfill
@@ -115,7 +115,7 @@
 \section*{(A) Introduction}
 Western Canada, with glaciers and complex topography presents significant
 challenges for regional climate models. Many surface-related parameterizations
-were improved or newly implemented in the Canadian Regional Climate Model to
+were improved or newly implemented in the Canadian Regional Climate Model \citep[and references therein]{huziy2017a} to
 improve the representation of the surface climate and hydrology. These include
 dynamic vegetation, dynamic glaciers, lake-river system and frozen soil
 hydraulic conductivity parameterizations. The objective of this study is to
@@ -141,18 +141,17 @@ extremes for elevated regions by 0.5–1 mm/day.
 %	OBJECTIVES
 %----------------------------------------------------------------------------------------
 
-%\color{DarkSlateGray} % DarkSlateGray color for the rest of the content
-\vspace{0.25cm}
-\begin{tcolorbox}[colback=white,colframe=green!40!black,adjusted title={Main objectives}]
-  \begin{enumerate}
-  \item Evaluate the net impact of the improved CRCM5 model, resulted from adding
-        dynamic vegetation, frozen soil hydraulic conductivity and glacier
-        parameterization, on simulated climate of western Canada at 0.44$^\circ$.
-  \item Identify the impact of increased resolution on the modified model configuration,
-        by comparing simulations at 0.44$^\circ$ and 0.11$^\circ$ horizontal grid
-        spacing.
-  \end{enumerate}
-\end{tcolorbox}
+% \vspace{0.25cm}
+% \begin{tcolorbox}[colback=white,colframe=green!40!black,adjusted title={Main objectives}]
+%   \begin{enumerate}
+%   \item Evaluate the net impact of the improved CRCM5 model, resulted from adding
+%         dynamic vegetation, frozen soil hydraulic conductivity and glacier
+%         parameterization, on simulated climate of western Canada at 0.44$^\circ$.
+%   \item Identify the impact of increased resolution on the modified model configuration,
+%         by comparing simulations at 0.44$^\circ$ and 0.11$^\circ$ horizontal grid
+%         spacing.
+%   \end{enumerate}
+% \end{tcolorbox}
 
 %----------------------------------------------------------------------------------------
 %	MATERIALS AND METHODS
@@ -161,19 +160,23 @@ extremes for elevated regions by 0.5–1 mm/day.
 \section*{(B) Methods and experiment configurations}
 %\subsection*{C.1 Methods}
 %
-This study is based on the comparison of three CRCM5 simulations (Table \ref{table:simulations}) performed over western Canada.
-To validate mean and extreme 2m air temperature and precipitation, daily DAYMET dataset \citet{thornton1997}, aggregated from the original 1km grid to the corresponding
-model resolution (i.e. 0.44$^\circ$ and 0.11$^\circ$) is used. \\[1cm]
+This study is based on the comparison of three CRCM5 simulations (Table
+\ref{table:simulations}) performed over western Canada. To validate mean and
+extreme 2m air temperature and precipitation, daily DAYMET dataset
+\citet{thornton1997}, aggregated from the original 1km grid to the corresponding
+model resolution (i.e. 0.44$^\circ$ and 0.11$^\circ$) is used.
+
 %
-\adjustbox{valign=t, minipage=0.55\linewidth}{
+\noindent
+\adjustbox{valign=t, minipage=0.5\linewidth}{
   \footnotesize
   \begin{tabularx}{\linewidth}{lX}
   \toprule
   \textbf{Simulation}    & \textbf{Description}\\
   \midrule
-  \textbf{WC\_044\_default}    & Default model before implementation of the enhancements at 0.44$^\circ$\\[0.5cm]
-  \textbf{WC\_044\_modified}   & With parameterization enhancements at 0.44$^\circ$ \\[0.5cm]
-  \textbf{WC\_011\_modified}   & With parameterization enhancements at 0.11$^\circ$\\
+  \textbf{WC\_044\_default}    & Default without the enhancements at 0.44$^\circ$\\[0.25cm]
+  \textbf{WC\_044\_modified}   & With the enhancements at 0.44$^\circ$ \\[0.25cm]
+  \textbf{WC\_011\_modified}   & With the enhancements at 0.11$^\circ$\\
   \bottomrule
   \end{tabularx}
   \captionof{table}{\label{table:simulations}\color{Green} List of simulations used in the current study}
@@ -181,7 +184,7 @@ model resolution (i.e. 0.44$^\circ$ and 0.11$^\circ$) is used. \\[1cm]
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.4\linewidth}{
+\adjustbox{valign=t, minipage=0.46\linewidth}{
   \begin{tcolorbox}[colback=white,colframe=green!40!black, adjusted title={Experiment setup}]
   \flushleft
   \small
@@ -194,42 +197,48 @@ model resolution (i.e. 0.44$^\circ$ and 0.11$^\circ$) is used. \\[1cm]
   \end{tcolorbox}
 }
 
-\vspace{0.25cm}
-
-\subsection*{Summary of enhancements to the default model configuration}
+\subsection*{B.1 Enhancements to the default model configuration}
 
 \noindent
+\adjustbox{valign=t, minipage=0.48\linewidth}{
 \textbf{Dynamic vegetation} enhancement is the module responsible for simulation
 of carbon pools and two-way interactions of vegetation and climate, which allows
 to simulate inter-annual variability of vegetation properties as well as its
 structure, i.e. temporal evolution of extents of various vegetation types.
 The model used for this parameterization is the Canadian Terrestrial Ecosystem
 Model \citep[CTEM, ][]{melton2016}.
-
-\vspace{0.25cm}
+}
+%
+\hfill
+%
 \noindent
+\adjustbox{valign=t, minipage=0.48\linewidth}{
 \textbf{Hydraulic conductivity of frozen soil} is modified based on \citet{ganji2017}. It takes into account frozen water fraction in the
 formula for soil hydraulic conductivity and as a result reduces it by a factor of $(1 + \theta_i \cdot C_k)^{-4}$ ($\theta_i$ - volumetric
 fraction of frozen water in soil, $C_k$ - constant parameter). This modification is expected to decrease soil hydraulic conductivity during transition seasons (i.e. spring and summer) and
 lead to enhancement of surface runoff.
+}
 
-\vspace{0.25cm}
+\vspace{0.5cm}
 \noindent
-\adjustbox{valign=t, minipage=0.48\linewidth}{
+\adjustbox{valign=t, minipage=0.61\linewidth}{
     \textbf{Dynamic glaciers}. The implementation of dynamic glaciers is inspired by \citet{kotlarski2009}. The parameterization
-    uses high resolution elevation datasets to divide sub-grid glaciers into elevation bins and uses
-    precipitation and energy fluxes provided by CRCM5 to simulate evolution of characteristics of glaciers.
-    This improvement is expected to give improved representation of spatial extent of the glaciers and lead to
+    uses high-resolution elevation datasets to divide each grid into elevation bins, where glaciers are distributed, and uses
+    precipitation and energy fluxes provided by CRCM5 to simulate the evolution of glacier parameters.
+    This modification is expected to improve the representation of the spatial extent of glaciers and lead to
     more realistic albedo and therefore a better partitioning of radiation fluxes.
 }
 %
 \hfill
 %
-\adjustbox{valign=t, minipage=0.45\linewidth}{
-  \includegraphics[width=\linewidth]{figures/glacier_fraction}
-  \captionof{figure}{\label{figure:glacier_fraction}\color{Green} Spatial extent of glacier fractions used as initial conditions for
-                      the WC\_044\_modified and WC\_011\_modified configurations. Based on Randolph
-                      Glacier Inventory (RGI) global dataset.}
+\adjustbox{valign=t, minipage=0.35\linewidth}{
+  \begin{center}
+    \includegraphics[width=0.8\linewidth]{figures/glacier_fraction}
+    \captionof{figure}{\label{figure:glacier_fraction}\color{Green} Spatial extent of glacier fractions used as initial conditions for
+                        the WC\_044\_modified and WC\_011\_modified configurations. Based on Randolph
+                        Glacier Inventory (RGI) global dataset.}
+
+  \end{center}
 }
 
 
@@ -245,42 +254,52 @@ lead to enhancement of surface runoff.
 \subsection*{C.1 Impact of added parameterizations on seasonal mean fields}
 \noindent
 \begin{minipage}[t]{\linewidth}
-\begin{tikzpicture}
-    % schematics
-    \node (wc044default) {
-      \includegraphics[width=0.95\linewidth, trim={0.3cm 0.1cm 0 0.1cm}, clip]{figures/seasonal_mean_TT_bias_wc_044_default}
-    };
-    \node[left=0.8cm of wc044default, rotate=90, anchor=north, scale=0.8] (wc044default_label) {WC\_044\_default};
 
-    \node [below=-1.85cm of wc044default, anchor=north] (wc044modified) {
-      \includegraphics[width=0.95\linewidth, trim={0.3cm 0.1cm 0 0.4cm}, clip]{figures/seasonal_mean_TT_bias_wc_044_modified}
-    };
-    \node[left=0.8cm of wc044modified, anchor=north, rotate=90, scale=0.8] (wc044modified_label) {WC\_044\_modified};
-\end{tikzpicture}
-\captionof{figure}{\label{figure:t2mvalidation}
-                   \color{Green} Seasonal 2m air temperature biases with respect to aggregated
-                    DAYMET dataset ($^\circ$C) for WC\_044\_default (first row) and
-                    WC\_044\_modified (second row).}
+\begin{center}
+  \begin{tikzpicture}
+      % schematics
+      \node (wc044default) {
+        \includegraphics[width=0.8\linewidth, trim={0.3cm 0.63cm 0 0.1cm}, clip]{figures/seasonal_mean_TT_bias_wc_044_default}
+      };
+      \node[left=0.8cm of wc044default, rotate=90, anchor=north, scale=0.8] (wc044default_label) {WC\_044\_default};
+
+      \node [below=-0.5cm of wc044default, anchor=north] (wc044modified) {
+        \includegraphics[width=0.8\linewidth, trim={0.3cm 0.1cm 0 0.41cm}, clip]{figures/seasonal_mean_TT_bias_wc_044_modified}
+      };
+      \node[left=0.8cm of wc044modified, anchor=north, rotate=90, scale=0.8] (wc044modified_label) {WC\_044\_modified};
+
+      \node[below=-1cm of wc044modified.south, anchor=north, text width=0.8\linewidth]{
+          \captionof{figure}{\label{figure:t2mvalidation}
+                         \color{Green} Seasonal 2m air temperature biases with respect to aggregated
+                          DAYMET dataset ($^\circ$C) for WC\_044\_default (first row) and
+                          WC\_044\_modified (second row).}
+      };
+
+  \end{tikzpicture}
+
+\end{center}
 \end{minipage}
-
-\vspace{1cm}
 
 \noindent
 \begin{minipage}[t]{\linewidth}
-\begin{tikzpicture}
-    \node (wc044default) {
-      \includegraphics[width=0.95\linewidth, trim={0.35cm 0.3cm 0 0.1cm}, clip]{figures/seasonal_mean_PR_bias_wc_044_default}
-    };
-    \node[left=0.8cm of wc044default, rotate=90, anchor=north, scale=0.8] (wc044default_label) {WC\_044\_default};
+\begin{center}
+  \begin{tikzpicture}
+      \node (wc044default) {
+        \includegraphics[width=0.8\linewidth, trim={0.30cm 0.83cm 0 0.1cm}, clip]{figures/seasonal_mean_PR_bias_wc_044_default}
+      };
+      \node[left=0.8cm of wc044default, rotate=90, anchor=north, scale=0.8] (wc044default_label) {WC\_044\_default};
 
-    \node [below=-1.8cm of wc044default, anchor=north] (wc044modified) {
-      \includegraphics[width=0.95\linewidth, trim={0.35cm 0.1cm 0 0.43cm}, clip]{figures/seasonal_mean_PR_bias_wc_044_modified}
-    };
-    \node[left=0.8cm of wc044modified, anchor=north, rotate=90, scale=0.8] (wc044modified_label) {WC\_044\_modified};
-\end{tikzpicture}
-\captionof{figure}{\label{figure:prvalidation}\color{Green} Same as
-                   Figure~\ref{figure:t2mvalidation} but for total precipitation (mm/day).}
+      \node [below=-1cm of wc044default, anchor=north] (wc044modified) {
+        \includegraphics[width=0.8\linewidth, trim={0.30cm 0.1cm 0 0.43cm}, clip]{figures/seasonal_mean_PR_bias_wc_044_modified}
+      };
+      \node[left=0.8cm of wc044modified, anchor=north, rotate=90, scale=0.8] (wc044modified_label) {WC\_044\_modified};
+      \node[below=-1cm of wc044modified.south, anchor=north, text width=0.8\linewidth]{
+        \captionof{figure}{\label{figure:prvalidation}\color{Green} Same as
+                           Figure~\ref{figure:t2mvalidation} but for total precipitation (mm/day).}
+      };
+  \end{tikzpicture}
 
+\end{center}
 \end{minipage}
 
 
@@ -299,7 +318,7 @@ lead to enhancement of surface runoff.
   southeastern parts of the domain.
   \item JJA precipitation is worse in WC\_044\_modified with respect to
   the default configuration in the southeastern part of the domain. This could be explained by the compensation of errors, which
-  occurred in WC\_044\_default, where wet bias from spring eliminated eliminated the dry biases in summer. But in WC\_044\_modified the
+  occurred in WC\_044\_default, where wet bias from spring suppressed the dry biases in summer. But in WC\_044\_modified the
   MMA wet bias is corrected and the soil is not wet enough to eliminate the dry bias during JJA season.
 \end{itemize}
 
@@ -312,11 +331,11 @@ WC\_044\_modified (shown in the previous section,
 Figs.~\ref{figure:t2mvalidation}--\ref{figure:prvalidation}).
 \begin{center}
 \begin{tikzpicture}
-      \node (wc044default) {
+      \node (wc011modified) {
         \includegraphics[width=0.8\linewidth, trim={0.3cm 0.1cm 0 0.1cm}, clip]{figures/seasonal_mean_TT_bias_wc_011_modified}
       };
-      \node[left=0.8cm of wc044default, rotate=90, anchor=north, scale=0.8] (wc011modified_label) {WC\_011\_modified};
-      \node[below= -1cm of wc044default.south west,text width=0.8\linewidth, align=left, anchor=north west]{
+      \node[left=0.8cm of wc011modified, rotate=90, anchor=north, scale=0.8] (wc011modified_label) {WC\_011\_modified};
+      \node[below= -1cm of wc011modified.south west,text width=0.8\linewidth, align=left, anchor=north west]{
         \captionof{figure}{\label{figure:t2mvalidation011}\color{Green} Same as the second
                            row in Figure \ref{figure:t2mvalidation} but for WC\_011\_modified ($^\circ$C).}
       };
@@ -342,8 +361,11 @@ Figs.~\ref{figure:t2mvalidation}--\ref{figure:prvalidation}).
 \end{minipage}
 
 \begin{itemize}
-  \item Increasing resolution of the modified configuration from 0.44$^\circ$ to 0.11$^\circ$ leads to warmer 2m air temperatures and decreased DJF, MAM and SON temperature biases.
-  Although the positive JJA biases in the southern part of the domain are amplified in WC\_011\_modified with respect to WC\_044\_modified.
+  \item Increasing resolution of the modified configuration from 0.44$^\circ$ to
+        0.11$^\circ$ leads to warmer 2m air temperatures and decreased DJF, MAM and
+        SON temperature biases. Although the positive JJA biases in the southern part
+        of the domain are amplified in WC\_011\_modified with respect to
+        WC\_044\_modified.
 
   \item The positive MAM precipitation bias in the southern part of the domain,
         which was fixed in WC\_044\_modified reappears in WC\_011\_modified and
@@ -370,20 +392,19 @@ WC\_044\_modified and WC\_011\_modified. The indices are calculated as in \citet
 \center
 \begin{tikzpicture}
     % schematics
-    \node[label={\small TX10}] (tx10) {
+    \node[label={[yshift=-0.5cm]\small TX10}] (tx10) {
       \includegraphics[width=0.48\linewidth, trim={0 0 0 0}, clip]{figures/tx10_ts}
     };
-    \node[right=0.1cm of tx10.east, anchor=west, label={\small TN90}] (tn90) {
+    \node[right=0.1cm of tx10.east, anchor=west, label={[yshift=-0.5cm]\small TN90}] (tn90) {
       \includegraphics[width=0.48\linewidth, trim={0 0 0 0}, clip]{figures/tn90_ts}
     };
 
-    \node[label={\small PR90}, below=1cm of tx10.south, anchor=north] (pr90) {
+    \node[label={[yshift=-0.5cm]\small PR90}, below=0.5cm of tx10.south, anchor=north] (pr90) {
       \includegraphics[width=0.48\linewidth, trim={0 0 0 0}, clip]{figures/pr90_ts}
     };
 
     \node [below=-1cm of tn90.south, anchor=north, text width=0.4\linewidth, align=left]{
-      \captionof{figure}{\color{Green} Area averaged biases of 10th percentile of daily maximum temperature (TX10),
-      90th percentile of daily minimum temperature (TN90) and 90th percentile of daily mean total precipitation (PR90) for WC\_044\_default (blue),
+      \captionof{figure}{\color{Green} Area averaged biases of TX10, TN90 and PR90 for WC\_044\_default (blue),
       WC\_044\_modified (orange) and WC\_011\_modified (green). The biases are calculated using DAYMET observation dataset.
       }
     };
@@ -391,8 +412,12 @@ WC\_044\_modified and WC\_011\_modified. The indices are calculated as in \citet
 \end{minipage}
 
 \begin{itemize}
+ \item The slower growth rate of the vegetation in spring appears to be corrected
+       by the increased resolution in WC\_011\_modified compared to WC\_044\_modified.
+ \item WC\_011\_modified, due to better representation of surface characteristics,
+       simulates more accurately TX10 and TN90 throughout a year with respect to
+       WC\_044\_modified and WC\_044\_default.
  \item As discussed in the previous section, the over recycling of soil moisture in spring causes wet biases in WC\_011\_modified.
- \item The slower growth rate of the vegetation in spring appears to be corrected by the increased resolution in WC\_011\_modified compared to WC\_044\_modified.
 \end{itemize}
 
 \subsection*{C.4 Zonal structure of the daily extremes in a region with complex topography}
@@ -417,11 +442,10 @@ WC\_044\_modified and WC\_011\_modified. The indices are calculated as in \citet
   inside the region shown in Fig.~\ref{topofig} are analyzed.
 }
 
-\vspace{0.25cm}
+\vspace{0.15cm}
 \noindent
 \begin{minipage}[t]{\linewidth}
 \begin{center}
-
 \begin{tikzpicture}
     % TX10
     \node[label={[yshift=-0.5cm]\small TX10 ($^\circ$C)}, label={[rotate=90, anchor=south, yshift=-0.5cm]left:\small DJF}] (tx10_djf) {
@@ -490,9 +514,8 @@ WC\_044\_modified and WC\_011\_modified. The indices are calculated as in \citet
     %   \includegraphics[width=0.31\linewidth, trim={0 0 0 11.5cm}, clip]{figures/meridional_avg/SON_total_prec}
     % };
 
-    \node [below=-0.5cm of tx10_son.south west, anchor=north west, text width=\linewidth, align=left]{
-      \captionof{figure}{\color{Green} Zonal structure of seasonal mean biases for 10th percentile of daily maximum temperature (TX10),
-      90th percentile of daily minimum temperature (TN90) and 90th percentile of daily mean total precipitation (PR90) for WC\_044\_default (blue),
+    \node [right=0.1cm of tx10_son.south east, anchor=west, text width=0.6\linewidth, yshift=0.5cm]{
+      \captionof{figure}{\color{Green} Zonal structure of seasonal mean biases of TX10, TN90 and PR90 for WC\_044\_default (blue),
       WC\_044\_modified (orange) and WC\_011\_modified (green). The biases are calculated using DAYMET observation dataset.
       }
     };
@@ -504,12 +527,10 @@ WC\_044\_modified and WC\_011\_modified. The indices are calculated as in \citet
 % discussion of the meridional means  of the extremes
 \noindent
 \begin{minipage}[t]{\linewidth}
-  \begin{itemize}
-      \item Overall, the best performance in simulating the extreme indices over the complex
+    Overall, the best performance in simulating the extreme indices over the complex
             topography is shown by the WC\_011\_modified model configuration. Moreover for TX10 and TN90, WC\_011\_modified performs better
             for all considered latitudes. The WC\_011\_modified is obviously the worst only for PR90 in the west part of the considered box,
             i.e. upwind of the complex topography region, where the total precipitation is overestimated with respect to the DAYMET dataset.
-  \end{itemize}
 \end{minipage}
 
 
@@ -525,6 +546,9 @@ WC\_044\_modified and WC\_011\_modified. The indices are calculated as in \citet
   \begin{itemize}
   \item In this project, CRCM5 simulations with newly added surface parameterizations of dynamic vegetation,
   glaciers and frozen soil hydraulic conductivity were evaluated over the region of western Canada at 0.44$^\circ$ and 0.11$^\circ$ resolutions.
+  \item To fully take advantage of the introduced model enhancements it is advised to use it at 0.11$^\circ$ resolution. In case the
+        correct representation of precipitation is required, then the triggering
+        mechanism for the convective precipitation generation should be changed to reduce its sensitivity to instabilities and intensity of the generated precipitation.
   \item It is recognized that the modified configurations are not tuned as extensively as the default one and therefore
   some added value is still expected to be gained after the model is retuned.
   \end{itemize}
